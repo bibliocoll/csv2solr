@@ -1,0 +1,31 @@
+# AUTHOR
+Daniel Zimmel 2013 <zimmel@coll.mpg.de>
+MPI Collective Goods Bonn, Library
+
+# REQUIREMENTS
+(bash) Perl, Awk, Java installed
+
+# USAGE
+csv2solr.sh [inputfile.csv]
+
+# DESCRIPTION
+csv2solr.sh converts a CSV input file to XML in Solr Schema.
+For example, you might want to feed it to VuFind like this:
+
+curl http://localhost:28083/solr/biblio/update -H 'Content-type:text/xml; charset=utf-8' --data-binary @update.solr.saxon.xml
+
+1. discard duplicates
+csv2solr.sh compares the inputfile.csv with a list of ISBNs (example: isbn.csv) and creates two files (duplicates only & inputfile.csv without duplicates)
+2. csv to xml conversion with csv2xml.pl
+3. xml to xml (solr schema) with saxon. You might want to modify the example XSLT (vub-pda.xsl) to match your Solr schema.xml or input file.
+
+# TODO
+Improve csv2xml conversion speed. 
+Make it more flexible (add option to not check for duplicates, etc.)
+
+# REFERENCE
+https://devtools.mpdl.mpg.de/projects/library2.0/wiki/projects/vufind/VUFNonMarcData	
+
+
+
+
