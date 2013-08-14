@@ -16,6 +16,7 @@ curl http://localhost:28083/solr/biblio/update -H 'Content-type:text/xml; charse
 
 1. discard duplicates
 csv2solr.sh compares the inputfile.csv with a list of ISBNs (example: isbn.csv) and creates two files (duplicates only & inputfile.csv without duplicates)
+Format: One line = one ISBN (for awk).
 2. csv to xml conversion with csv2xml.pl
 3. xml to xml (solr schema) with saxon. You might want to modify the example XSLT (vub-pda.xsl) to match your Solr schema.xml or input file.
 
